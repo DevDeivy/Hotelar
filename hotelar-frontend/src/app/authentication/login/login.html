@@ -1,0 +1,31 @@
+<form class="wrapper" [formGroup]="login" (ngSubmit)="loginValidation()">
+    <div class="wrapper-login">
+        <div class="hotelar">
+            <p>L</p>
+            <h2 class="title">Hotelar</h2>
+        </div>
+        <div class="login-description">
+            <h2>Inicia sesion </h2>
+            <p>Bienvenido a Hotelar inicia sesion para continuar</p>
+        </div>
+
+        <div class="inputs">
+            <input class="input" type="email" placeholder="Email" formControlName="email">
+            <input class="input" type="password" placeholder="Password" formControlName="password">
+        </div>
+
+        <div class="remember-me">
+            <span><input type="checkbox"> Recuerdame</span>
+            <a [routerLink]="['/forgot']">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button class="btn" type="submit">Iniciar sesion</button>
+        <span class="register">¿No tienes una cuenta? <a [routerLink]="['/register']">Registrate</a></span>
+
+    </div>
+
+    <div class="wrapper-hotelar">
+        <h1>Hotelar</h1>
+        <h3>tu mejor opcion para manejar tus hoteles</h3>
+    </div>
+</form>

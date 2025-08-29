@@ -22,5 +22,4 @@ export class UserService {
   createUser(user: user): Observable<any>{
     return this.http.post(`${this.urlCreate}/api/create`, user)
   }
-  
 }

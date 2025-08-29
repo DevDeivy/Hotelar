@@ -1,1 +1,31 @@
-<p>register works!</p>
+<form class="wrapper" [formGroup]="register" (ngSubmit)="registerUser()">
+    <div class="wrapper-login">
+        <div class="hotelar">
+            <p>L</p>
+            <h2 class="title">Hotelar</h2>
+        </div>
+        <div class="login-description">
+            <h2>Registrate</h2>
+            <p>Bienvenido a Hotelar registrate para continuar</p>
+        </div>
+
+        <div class="inputs">
+            <input class="input" type="email" placeholder="Email" formControlName="email">
+            <input class="input" type="text" formControlName="name" placeholder="name">
+            <input class="input" type="text" formControlName="lastName" placeholder="lastName">
+            <input class="input" type="password" placeholder="Password" formControlName="password">
+            <input class="input" type="password" placeholder="Confirmar contraseña" formControlName="confirmPassword">
+        </div>
+
+
+        <button class="btn" type="submit" [disabled]="!register.valid || confirmPassword()">Registrate</button>
+        <span class="login">ya tienes una cuenta? <a [routerLink]="['/login']">Inicia sesion</a></span>
+
+    </div>
+
+    <div class="wrapper-hotelar">
+        <h1>Hotelar</h1>
+        <h3>tu mejor opcion para manejar tus hoteles</h3>
+    </div>
+</form>
+  

@@ -76,3 +76,7 @@
 .register{
     text-align: center;
 }
+
+button[disabled]{
+    background-color: #a583e3;
+}

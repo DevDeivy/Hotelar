@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ValidatorsRegex } from '../../services/validators-regex';
+import { UserService } from '../../services/user-service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import { ValidatorsRegex } from '../../services/validators-regex';
 export class Login implements OnInit{
 
   login!: FormGroup;
-  private _validatorsRegex = inject(ValidatorsRegex)
+  private _validatorsRegex = inject(ValidatorsRegex);
+  private _userService = inject(UserService);
 
   ngOnInit(): void {
       this.login = new FormGroup({
@@ -21,7 +23,6 @@ export class Login implements OnInit{
       })
   }
 
-  //aqui va el consumo a la api que será mas adelante
   loginValidation(){
 
   }

@@ -11,7 +11,7 @@
 
         <div class="inputs">
             <input class="input" type="email" placeholder="Email" formControlName="email">
-            <input class="input" type="password" placeholder="Password" formControlName="password">
+            <input class="input" type="text" placeholder="Password" formControlName="password">
         </div>
 
         <div class="remember-me">
@@ -19,7 +19,7 @@
             <a [routerLink]="['/forgot']">¿Olvidaste tu contraseña?</a>
         </div>
 
-        <button class="btn" type="submit">Iniciar sesion</button>
+        <button class="btn" type="submit" [disabled]="!login.valid">Iniciar sesion</button>
         <span class="register">¿No tienes una cuenta? <a [routerLink]="['/register']">Registrate</a></span>
 
     </div>

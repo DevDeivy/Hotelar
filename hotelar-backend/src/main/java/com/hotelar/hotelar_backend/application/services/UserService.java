@@ -1,5 +1,6 @@
 package com.hotelar.hotelar_backend.application.services;
 
+import com.hotelar.hotelar_backend.api.dto.ChangePasswordDTO;
 import com.hotelar.hotelar_backend.api.dto.GenerateJwtDTO;
 import com.hotelar.hotelar_backend.api.dto.UserDTO;
 import com.hotelar.hotelar_backend.domain.models.User;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -39,5 +41,18 @@ public class UserService {
         response.put("User created", user);
         response.put("Token: ", token);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    public ResponseEntity<Object> changePassword(Long id, @RequestBody ChangePasswordDTO changePasswordDTO){
+        var userOptional = userRepository.findById(id);
+        if(!userRepository.existsById(id) || userOptional.isEmpty()){
+            return ResponseEntity.badRequest().body("enter a valid id");
+        } else if (!changePasswordDTO.getPassword().equals(changePasswordDTO.getConfirmPassword())) {
+            return ResponseEntity.badRequest().body("please enter a valid credentials");
+        }
+        User user = userOptional.get();
+        user.setPassword(bCryptPasswordEncoder.encode(changePasswordDTO.getPassword()));
+        userRepository.save(user);
+        return ResponseEntity.ok().body("Password changed successfully");
     }
 }

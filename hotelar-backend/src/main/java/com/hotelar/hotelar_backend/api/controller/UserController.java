@@ -1,5 +1,6 @@
 package com.hotelar.hotelar_backend.api.controller;
 
+import com.hotelar.hotelar_backend.api.dto.ChangePasswordDTO;
 import com.hotelar.hotelar_backend.api.dto.UserDTO;
 import com.hotelar.hotelar_backend.application.services.UserService;
 import jakarta.validation.Valid;
@@ -17,5 +18,10 @@ public class UserController {
     @PostMapping("/create")
     public ResponseEntity<Object> createUser(@RequestBody @Valid UserDTO userDTO){
         return userService.createUser(userDTO);
+    }
+
+    @PutMapping("/reset/{id}")
+    public ResponseEntity<Object> changePassword(@PathVariable Long id,@RequestBody @Valid ChangePasswordDTO changePasswordDTO){
+        return userService.changePassword(id, changePasswordDTO);
     }
 }

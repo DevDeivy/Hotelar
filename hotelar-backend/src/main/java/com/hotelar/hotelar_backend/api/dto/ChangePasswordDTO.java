@@ -1,6 +1,5 @@
 package com.hotelar.hotelar_backend.api.dto;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,13 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
-    @NotNull
-    @Email
-    private String email;
-    @NotNull
-    private String name;
-    private String lastName;
+public class ChangePasswordDTO {
     @NotNull
     private String password;
+    @NotNull
+    private String confirmPassword;
 }

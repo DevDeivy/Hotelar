@@ -27,7 +27,7 @@ public class UserService {
     public ResponseEntity<Object> createUser(@RequestParam UserDTO userDTO){
         User user = new User();
         GenerateJwtDTO generateJwtDTO = new GenerateJwtDTO();
-        if (userRepository.existByEmail(userDTO.getEmail()) || !userRepository.existsById(user.getId())){
+        if (userRepository.existsByEmail(userDTO.getEmail()) || !userRepository.existsById(user.getId())){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("this email is already exist");
         }
         var response = new HashMap<>();

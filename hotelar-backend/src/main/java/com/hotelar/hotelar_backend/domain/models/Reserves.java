@@ -16,6 +16,7 @@ public class Reserves {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @Id
     private Long id;
 
     @Column(name = "startDate")

@@ -22,6 +22,5 @@ public class ReservesController {
         return reservesServices.createReserve(reservesDTO);
     }
 
-    @PostMapping("/")
 
 }

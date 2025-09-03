@@ -1,0 +1,87 @@
+.plan {
+    background-color: #F2F2F2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0vh 8vh;
+    margin: 2vh;
+    border-radius: 1vh;
+    justify-content: space-between;
+    transition: 0.5s;
+}
+
+.plan:hover {
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px #ff009075;
+    padding: 2vh 10vh;
+    transition: 0.5s;
+}
+
+.plan__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-bottom: 4vh;
+}
+
+.plan__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh 0 0;
+}
+
+.plan__title {
+    font-size: 2rem;
+    font-weight: 600;
+    padding-bottom: 3vh;
+}
+
+.plan__price {
+    font-size: 3rem;
+    font-weight: 600;
+    padding-bottom: 2vh;
+}
+
+.plan__button {
+    padding: 1.4vh 4vh;
+    border: solid 1.5px #ffffff;
+    border-radius: 3px;
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.5s;
+}
+
+.plan__button:hover{
+    color: #000000;
+    background-color: #ffffff;
+    border: solid 1.5px #000000;
+    transition: 0.5s;
+}
+
+.plan__benefits-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 3vh 0 1vh;
+}
+
+.plan__benefit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 1vh;
+}
+
+.plan__benefit-icon {
+    background-image: url(../../../assets/check.png);
+    height: 2vh;
+    width: 2vh;
+    background-size: cover;
+    background-position: center;
+    margin: 0 5px;
+}

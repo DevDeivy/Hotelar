@@ -15,11 +15,11 @@ export class UserService {
   public urlCreate?: any;
   
   constructor(){
-    this.urlCreate = routApi.createUser;
+    this.urlCreate = routApi.users;
   }
 
 
-  createUser(user: user): Observable<any>{
-    return this.http.post(`${this.urlCreate}/api/create`, user)
+  createUser(user: user): Observable<Object>{
+    return this.http.post(`${this.urlCreate}/create`, user)
   }
 }

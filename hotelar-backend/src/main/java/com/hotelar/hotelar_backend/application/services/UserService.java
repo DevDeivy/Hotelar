@@ -24,10 +24,10 @@ public class UserService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final GenerateJwtService generateJwtService;
 
-    public ResponseEntity<Object> createUser(@RequestParam UserDTO userDTO){
+    public ResponseEntity<Object> createUser(@RequestBody UserDTO userDTO){
         User user = new User();
         GenerateJwtDTO generateJwtDTO = new GenerateJwtDTO();
-        if (userRepository.existsByEmail(userDTO.getEmail()) || !userRepository.existsById(user.getId())){
+        if (userRepository.existsByEmail(userDTO.getEmail())){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("this email is already exist");
         }
         var response = new HashMap<>();
@@ -38,8 +38,8 @@ public class UserService {
         userRepository.save(user);
         generateJwtDTO.setToken(generateJwtService.tokenWithoutClaims(user));
         var token = generateJwtDTO.getToken();
-        response.put("User created", user);
         response.put("Token: ", token);
+        response.put("User created", user);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

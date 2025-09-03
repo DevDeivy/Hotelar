@@ -1,3 +1,3 @@
 export const routApi= {
-    createUser: 'http://localhost:8080'
+    users: 'http://localhost:8080/api/user'
 }

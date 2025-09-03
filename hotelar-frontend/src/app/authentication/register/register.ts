@@ -1,7 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ValidatorsRegex } from '../../services/validators-regex';
+import { UserService } from '../../services/user-service';
+import { user } from '../../interface/user';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +15,10 @@ export class Register implements OnInit{
 
   register!: FormGroup
   private _validatorsRegex = inject(ValidatorsRegex);
+  private _api = inject(UserService);
+  public response?: Object;
+  private _router = inject(Router);
+  public advert: boolean = false;
 
   ngOnInit(): void {
     this.register = new FormGroup({
@@ -28,8 +34,22 @@ export class Register implements OnInit{
     return this.register.get('password')!.value !== this.register.get('confirmPassword')!.value;
   }
 
-  registerUser(){
+  registerUser(res: user){
 
+    if(!this.register){
+      this.advert = true;
+      return
+    }
+
+    this._api.createUser(res).subscribe(data => {
+      this.response = data
+      this._router.navigate(['/login'])
+      console.log(this.response)
+    }, err => {
+      console.log(err)
+      this.advert = true
+    })
   }
+
 
 }

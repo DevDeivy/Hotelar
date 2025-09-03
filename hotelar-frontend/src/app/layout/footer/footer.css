@@ -55,12 +55,28 @@
     margin: 0 5px;
     text-align: left;
     border-radius: 3px;
+    transition: 0.05s ease-in-out;
+}
+
+.footer__contact-btn:hover{
+    background-color: #21232F;
+    color: #ffffff;
+    border: solid 1px #ffffff;
+    transition: 0.05s ease-in-out;
 }
 
 .footer__contact-btn--primary {
     background-color: #21232F;
     border: solid 1px #ffffff;
     color: #ffffff;
+    transition: 0.05s ease-in-out;
+}
+
+.footer__contact-btn--primary:hover{
+    background-color: #ffffff;
+    color: #21232F;
+    border: solid 1px #21232F;
+    transition: 0.05s ease-in-out;
 }
 
 .footer__devs {
@@ -72,8 +88,23 @@
     display: flex;
     align-items: center;
     margin: 0 10px;
+    cursor: pointer;
 }
 
 .footer__dev >* {
     margin: 0 5px;
+}
+
+.footer__dev-img{
+    height: 5vh;
+    width: 5vh;
+}
+
+.footer__dev-name{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.footer__dev-name:hover{
+    text-decoration: underline;
 }

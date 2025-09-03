@@ -14,7 +14,83 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background-image: url(/src/assets/Hotel.png); */
+    background-image: url(../../assets/Hotel.png);
     background-size: cover;
     background-position: center;
+    min-height: 50vh;
+    padding: 15vh 0;
+    color: #000000;
+    opacity: 0.9;
+}
+
+.home__hero-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home__hero-title {
+    font-size: 5rem;
+    font-weight: 700;
+    text-align: center;
+    width: 50%;
+    padding: 1vh 0;
+}
+
+.home__hero-text {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-align: center;
+    padding: 6vh 0;
+    width: 70%;
+}
+
+.home__btn {
+    margin-left: 15px;
+    padding: 1.4vh 4vh;
+    border: solid 1.5px #000000;
+    border-radius: 3px;
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: -4px 4px 0 #000000;
+    transition: 0.5s;
+}
+
+.home__btn:hover {
+    color: #ffffff;
+    background-color: #000000;
+    box-shadow: -4px 4px 0 #000000;
+    border: solid 1.5px #ffffff;
+    transition: 0.5s;
+    box-shadow: -4px 4px 0 #ffffff;
+}
+
+.home__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6vh;
+}
+
+.home__info-title {
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.home__info-text {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-align: center;
+    padding: 5vh 0 0 0;
+    width: 70%;
+}
+
+.home__cards {
+    display: flex;
+    align-items: center;
+    padding: 1% 0 5%;
 }

@@ -11,6 +11,4 @@ import lombok.NoArgsConstructor;
 public class ChangePasswordDTO {
     @NotNull
     private String password;
-    @NotNull
-    private String confirmPassword;
 }

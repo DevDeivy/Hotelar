@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Set;
@@ -28,8 +27,7 @@ public class RoomService {
         var state = roomDTO.getStateRoom().toLowerCase();
         if(roomRepository.existsByNumber(roomDTO.getNumber())){
             return ResponseEntity.badRequest().body("la habitacion ya existe");
-        }
-        if(includeState.contains(state)){
+        }else if(includeState.contains(state)){
             room.setStateRoom(state);
         } else {
             return ResponseEntity.badRequest().body("estado invalido");
@@ -41,7 +39,7 @@ public class RoomService {
         return ResponseEntity.status(HttpStatus.CREATED).body(room);
     }
 
-    public ResponseEntity<Object> deleteRoom(@PathVariable Long id){
+    public ResponseEntity<Object> deleteRoom(Long id){
         if(!roomRepository.existsById(id)){
             return ResponseEntity.badRequest().body("el id no existe");
         }

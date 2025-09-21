@@ -1,5 +1,6 @@
 package com.hotelar.hotelar_backend.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,4 +28,9 @@ public class Reserves {
 
     @Column(name = "state")
     private String state;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_id", nullable = false)
+    @JsonBackReference
+    private Room room;
 }

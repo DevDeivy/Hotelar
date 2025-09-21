@@ -5,17 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReservesDTO {
     @NotNull
-    private LocalDateTime startDate;
+    private Long roomId;
     @NotNull
-    private LocalDateTime finishDate;
-    @NotNull
-    private String state;
-
+    private Integer days;
 }

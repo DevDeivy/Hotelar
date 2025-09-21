@@ -18,30 +18,39 @@ public class RoomService {
     private final RoomRepository roomRepository;
 
     public ResponseEntity<Object> getRooms(){
-        return ResponseEntity.ok(roomRepository.findAll());
+        return ResponseEntity.status(HttpStatus.FOUND).body(roomRepository.findAll());
     }
 
-    public ResponseEntity<Object> createRoom(@RequestBody RoomDTO roomDTO){
-        Room room = new Room();
+    public Room createRoom(@RequestBody RoomDTO roomDTO){
         Set<String> includeState = Set.of("disponible", "ocupado", "fuera de servicio");
-        var state = roomDTO.getStateRoom().toLowerCase();
-        if(roomRepository.existsByNumber(roomDTO.getNumber())){
-            return ResponseEntity.badRequest().body("la habitacion ya existe");
-        }else if(includeState.contains(state)){
-            room.setStateRoom(state);
-        } else {
-            return ResponseEntity.badRequest().body("estado invalido");
+        Room room = roomDTOtoRoom(roomDTO);
+        if(roomRepository.existsByRoomNumber(roomDTO.getRoomNumber())){
+            throw new IllegalArgumentException();
         }
-        room.setNumber(roomDTO.getNumber());
-        room.setTypeRoom(roomDTO.getTypeRoom());
-        roomRepository.save(room);
+        /*String state = (roomDTO.getStateRoom() == null || roomDTO.getStateRoom().isBlank()) ? "disponible" : roomDTO.getStateRoom().toLowerCase();
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(room);
+        if (!includeState.contains(state)) {
+            throw new IllegalArgumentException("invalid state");
+        }*/
+
+        Room savedRoom = roomRepository.save(room);
+        roomDTO.setId(savedRoom.getId());
+
+        return savedRoom;
+    }
+
+    private Room roomDTOtoRoom(RoomDTO roomDTO){
+        Room room = new Room();
+        room.setTypeRoom(roomDTO.getTypeRoom());
+        room.setRoomNumber(roomDTO.getRoomNumber());
+        room.setStateRoom(roomDTO.getStateRoom());
+        room.setPriceRoom(roomDTO.getPriceRoom());
+        return room;
     }
 
     public ResponseEntity<Object> deleteRoom(Long id){
         if(!roomRepository.existsById(id)){
-            return ResponseEntity.badRequest().body("el id no existe");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("this room don´t exist");
         }
         roomRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Room deleted");

@@ -22,11 +22,11 @@ public class UserService {
         if (userRepository.existsByEmail(userDTO.getEmail())){
             throw new IllegalArgumentException("this email already exists");
         }
-        User user = UserDTOtoUser(userDTO);
+        User user = userDTOtoUser(userDTO);
         return userRepository.save(user);
     }
 
-    public User UserDTOtoUser(UserDTO userDTO){
+    private User userDTOtoUser(UserDTO userDTO){
         User user = new User();
         user.setEmail(userDTO.getEmail());
         user.setName(userDTO.getName());

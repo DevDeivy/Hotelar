@@ -22,7 +22,6 @@ public class UserController {
 
     @PostMapping("/create")
     public ResponseEntity<UserResponseDTO> createUser(@RequestBody @Valid UserDTO userDTO){
-
         User createdUser = userService.createUser(userDTO);
         String token = generateJwtService.tokenWithoutClaims(createdUser);
         UserResponseDTO response = new UserResponseDTO(createdUser, token);
